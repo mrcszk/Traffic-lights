@@ -6,17 +6,17 @@ public class BuildTrafficLight
 
 	public static void main(String[] args) 
 	{
-		final int numOfLights=4+12;//cars+pedestrians
+		final int numOfLights=24;//cars+pedestrians
 		
-//		Events[] toGreen = new Events[numOfLights];
-//		Events[] toRed = new Events[numOfLights];
-//		Events[] onRed = new Events[numOfLights];
-//
-//		for (int i = 0; i < numOfLights; i++){
-//			toRed[i] = new Events();
-//			toGreen[i] = new Events();
-//			onRed[i] = new Events();
-//		}
+		Events[] toGreen = new Events[numOfLights];
+		Events[] toRed = new Events[numOfLights];
+		Events[] onRed = new Events[numOfLights];
+
+		for (int i = 0; i < numOfLights; i++){
+			toRed[i] = new Events();
+			toGreen[i] = new Events();
+			onRed[i] = new Events();
+		}
 
 
 		TrafficLight[] light =new TrafficLight[24];
@@ -26,7 +26,7 @@ public class BuildTrafficLight
 		light[2]=new TrafficLight(3,40,350,525,308,525,266,525);
 		light[3]=new TrafficLight(3,40,350,465,308,465,266,465);
 
-		light[4]=new TrafficLight(3,40,280,330,280,330-42,280,330-2*42);
+		light[4]=new TrafficLight(3,40,280,330,280,330-42,280,330-(2*42));
 		light[5]=new TrafficLight(3,40,340,330,340,330-42,340,330-2*42);
 
 		light[6]=new TrafficLight(3,40,505,240,547,240,589,240);
@@ -58,14 +58,14 @@ public class BuildTrafficLight
 		TrafficLightFrame tlf = new TrafficLightFrame("Traffic lights", light);
 
 
-//		for (int i = 0; i < 4; i++) {
-//			new Road(light[i],tlf.myPanel,toGreen[i], toRed[i], onRed[i]);
-//		}
-//
-//		for (int i = 4; i < light.length; i++){
-//			new Pedestrian(light[i],tlf.myPanel,toGreen[i], toRed[i], onRed[i]);
-//		}
+		for (int i = 0; i < 8; i++) {
+			new Road(light[i],tlf.myPanel,toGreen[i], toRed[i], onRed[i]);
+		}
 
-//		new Control(toRed,toGreen, onRed);
+		for (int i = 8; i < light.length; i++){
+			new Pedestrian(light[i],tlf.myPanel,toGreen[i], toRed[i], onRed[i]);
+		}
+
+		new Control(toRed,toGreen, onRed);
 	}
 }

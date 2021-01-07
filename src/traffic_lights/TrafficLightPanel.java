@@ -23,22 +23,22 @@ class TrafficLightPanel extends JPanel{
 		setBackground(Color.DARK_GRAY);
 
 // LEWY PASEK
-//		page.setColor(Color.BLUE);
-//		page.draw3DRect(0,350,260,100,true);
-		page.setColor(Color.green);
+		page.setColor(Color.BLACK);
+		page.fill3DRect(0,350,250,100,true);
+		page.setColor(new Color(0,102,0));
 		page.fill3DRect(0,350,250,100,true);
 
 
 		//PRAWY PASEK
 		page.setColor(Color.BLUE);
 		page.draw3DRect(650,350,230,100,true);
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fill3DRect(650,350,230,100,true);
 
 		//PRAWY DOL
 		x[0]=880  ; x[1]=880 ; x[2]=650 ; x[3]=650 ;
 		y[0]=570 ;  y[1]=830 ;  y[2]=830 ;  y[3]=570 ;
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
 		page.drawPolygon(x,y,4);
@@ -46,7 +46,7 @@ class TrafficLightPanel extends JPanel{
 		//PRAWY GORA
 		x[0]=880  ; x[1]=880 ; x[2]=650 ;  x[3]=650 ;
 		y[0]=230 ;  y[1]=0 ;  y[2]=0 ;  y[3]=230 ;
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
 		page.drawPolygon(x,y,4);
@@ -55,20 +55,20 @@ class TrafficLightPanel extends JPanel{
 // DOLNY PASEK
 //		page.setColor(Color.BLUE);
 //		page.draw3DRect(450,550,100,230,true);
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fill3DRect(390,570,120,240,true);
 
 // GORNY PASEK
 //		page.setColor(Color.BLUE);
 //		page.draw3DRect(450,550,100,230,true);
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fill3DRect(390,0,120,230,true);
 
 
 //LEWA DOL
 		x[0]=0  ; x[1]=0 ; x[2]=250 ; x[3]=250 ;
 		y[0]=570 ;  y[1]=830 ;  y[2]=830 ; y[3]=570 ;
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
 		page.drawPolygon(x,y,4);
@@ -77,7 +77,7 @@ class TrafficLightPanel extends JPanel{
 //LEWY GORA
 		x[0]=0  ; x[1]=0 ; x[2]=250;  x[3]=250 ;
 		y[0]=230 ;  y[1]=0 ;  y[2]=0 ; y[3]=230 ;
-		page.setColor(Color.green);
+		page.setColor(new Color(0,102,0));
 		page.fillPolygon(x,y,4);
 //		page.setColor(Color.BLUE);
 //		page.drawPolygon(x,y,5);
@@ -128,14 +128,28 @@ class TrafficLightPanel extends JPanel{
 			page.drawString(Integer.toString(i),lights[i].xP[0]+lights[i].diameter/2-3,lights[i].yP[0]+lights[i].diameter/2);
 		}
 
-//		page.setColor(Color.WHITE);
-//
-//		page.fillRect(580,710,15,40);
-//		page.fillRect(550,710,30,15);
-//		x[0]=280+240 ; x[1]=310+240 ;x[2]=310+240 ;
-//		y[0]=227+490 ; y[1]=212+490 ;y[2]=242+490 ;
-//		page.fillPolygon(x,y,3);
+		page.setColor(Color.WHITE);
 
+		page.fillRect(580,710,15,40);
+		page.fillRect(550,710,30,15);
+		x[0]=280+240 ; x[1]=310+240 ;x[2]=310+240 ;
+		y[0]=227+490 ; y[1]=212+490 ;y[2]=242+490 ;
+		page.fillPolygon(x,y,3);
+
+		page.fillRect(710,120,80,15);
+		x[0]=680; x[1]=710; x[2]=710 ;
+		y[0]=127; y[1]=112; y[2]=142 ;
+		page.fillPolygon(x,y,3);
+		page.fillRect(490+250,135,15,30);
+		x[0]=500+250 ; x[1]=483+250 ; x[2]=513 + 250;
+		y[0]=195 ; y[1]=165 ;y[2]=165 ;
+		page.fillPolygon(x,y,3);
+
+
+		page.fillRect(40,360,80,15);
+		x[0]=150 ; x[1]=120 ;x[2]=120 ;
+		y[0]=367 ; y[1]=350 ;y[2]=383 ;
+		page.fillPolygon(x,y,3);
 
 
 	}
