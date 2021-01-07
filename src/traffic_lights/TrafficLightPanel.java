@@ -1,127 +1,142 @@
 package traffic_lights;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 class TrafficLightPanel extends JPanel{
-	TrafficLight[] light;
+	TrafficLight  lights[];
 
-	public TrafficLightPanel(TrafficLight[] light){
+	public TrafficLightPanel(TrafficLight[] lights)
+	{
 		super();
 		setLayout(null);
 		setBackground(Color.WHITE);
-		this.light = light;
+		this.lights=lights;
 	}
 
-	public void paintComponent(Graphics page){
-		int i;
+	public void paintComponent(Graphics page)
+	{
+		int i, j;
 		int[] x =new int[5];
 		int[] y =new int[5];
 		super.paintComponent(page);
-		setBackground(Color.WHITE);
+		setBackground(Color.DARK_GRAY);
 
-		// OBSZAR OBOK
+// LEWY PASEK
+//		page.setColor(Color.BLUE);
+//		page.draw3DRect(0,350,260,100,true);
+		page.setColor(Color.green);
+		page.fill3DRect(0,350,250,100,true);
+
+
+		//PRAWY PASEK
 		page.setColor(Color.BLUE);
-		page.draw3DRect(10,10,770,60,true);
-		page.setColor(Color.LIGHT_GRAY);
-		page.fill3DRect(10,10,770,60,true);
+		page.draw3DRect(650,350,230,100,true);
+		page.setColor(Color.green);
+		page.fill3DRect(650,350,230,100,true);
 
-
+		//PRAWY DOL
+		x[0]=880  ; x[1]=880 ; x[2]=650 ; x[3]=650 ;
+		y[0]=570 ;  y[1]=830 ;  y[2]=830 ;  y[3]=570 ;
+		page.setColor(Color.green);
+		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
-		page.draw3DRect(10,200,260,100,true);
-		page.setColor(Color.LIGHT_GRAY);
-		page.fill3DRect(10,200,260,100,true);
+		page.drawPolygon(x,y,4);
 
+		//PRAWY GORA
+		x[0]=880  ; x[1]=880 ; x[2]=650 ;  x[3]=650 ;
+		y[0]=230 ;  y[1]=0 ;  y[2]=0 ;  y[3]=230 ;
+		page.setColor(Color.green);
+		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
-		page.draw3DRect(550,200,230,100,true);
-		page.setColor(Color.LIGHT_GRAY);
-		page.fill3DRect(550,200,230,100,true);
+		page.drawPolygon(x,y,4);
 
-		x[0]=80 ; x[1]=270 ;x[2]=270 ;
-		y[0]=430 ; y[1]=430 ;y[2]=550 ;
-		page.setColor(Color.LIGHT_GRAY);
-		page.fillPolygon(x,y,3);
+
+// DOLNY PASEK
+//		page.setColor(Color.BLUE);
+//		page.draw3DRect(450,550,100,230,true);
+		page.setColor(Color.green);
+		page.fill3DRect(390,570,120,240,true);
+
+// GORNY PASEK
+//		page.setColor(Color.BLUE);
+//		page.draw3DRect(450,550,100,230,true);
+		page.setColor(Color.green);
+		page.fill3DRect(390,0,120,230,true);
+
+
+//LEWA DOL
+		x[0]=0  ; x[1]=0 ; x[2]=250 ; x[3]=250 ;
+		y[0]=570 ;  y[1]=830 ;  y[2]=830 ; y[3]=570 ;
+		page.setColor(Color.green);
+		page.fillPolygon(x,y,4);
 		page.setColor(Color.BLUE);
-		page.drawPolygon(x,y,3);
-
-		x[0]=550 ; x[1]=700 ;x[2]=550 ;
-		y[0]=430 ; y[1]=430 ;y[2]=550 ;
-		page.setColor(Color.LIGHT_GRAY);
-		page.fillPolygon(x,y,3);
-		page.setColor(Color.BLUE);
-		page.drawPolygon(x,y,3);
-
-		x[0]=10   ; x[1]=80 ;  x[2]=270 ; x[3]=270 ;x[4]=10 ;
-		y[0]=530 ;  y[1]=530 ; y[2]=650 ; y[3]=710 ; y[4]=710 ;
-		page.setColor(Color.LIGHT_GRAY);
-		page.fillPolygon(x,y,5);
-		page.setColor(Color.BLUE);
-		page.drawPolygon(x,y,5);
-
-		x[0]=780   ; x[1]=780 ; x[2]=550 ; x[3]=550 ; x[4]=700 ;
-		y[0]=530 ;  y[1]=710 ;  y[2]=710 ; y[3]=650 ; y[4]=530 ;
-		page.setColor(Color.LIGHT_GRAY);
-		page.fillPolygon(x,y,5);
-		page.setColor(Color.BLUE);
-		page.drawPolygon(x,y,5);
-
-		// PRZEJSCIA DLA PIESZYCH
+		page.drawPolygon(x,y,4);
 		page.setColor(Color.BLACK);
+
+//LEWY GORA
+		x[0]=0  ; x[1]=0 ; x[2]=250;  x[3]=250 ;
+		y[0]=230 ;  y[1]=0 ;  y[2]=0 ; y[3]=230 ;
+		page.setColor(Color.green);
+		page.fillPolygon(x,y,4);
+//		page.setColor(Color.BLUE);
+//		page.drawPolygon(x,y,5);
+
+		page.setColor(Color.white);
+		page.fill3DRect(755,288,230,5,true);
+		page.setColor(Color.white);
+		page.fill3DRect(755,508,230,5,true);
+
+		page.setColor(Color.white);
+		page.fill3DRect(0,288,150,5,true);
+		page.setColor(Color.white);
+		page.fill3DRect(0,508,150,5,true);
+
+
+		page.setColor(Color.white);
+		page.fill3DRect(580,650,5,160,true);
+
+		page.setColor(Color.white);
+		page.fill3DRect(315,650,5,160,true);
+
+		page.setColor(Color.white);
+		page.fill3DRect(580,0,5,150,true);
+
+
+		page.setColor(Color.white);
+		page.fill3DRect(315,0,5,150,true);
+
+		page.setColor(Color.WHITE);
+
 		for (i=0;i<4;i++)
 		{
-			page.fillRect(160,78+(i*30),100,25);
-			page.fillRect(560,78+(i*30),100,25);
-			page.fillRect(160,308+(i*30),100,25);
-			page.fillRect(560,308+(i*30),100,25);
-			page.fillRect(290+(i*30),440,25,100);
-			page.fillRect(410+(i*30),440,25,100);
+			page.fillRect(150,233+(i*30),90,25);
+			page.fillRect(665,233+(i*30),90,25);
+			page.fillRect(150,453+(i*30),90,25);
+			page.fillRect(665,453+(i*30),90,25);
+			page.fillRect(260+(i*30),570,25,80);
+			page.fillRect(525+(i*30),570,25,80);
+			page.fillRect(260+(i*30),150,25,80);
+			page.fillRect(525+(i*30),150,25,80);
 		}
 
-		for (i=0;i<3;i++)
-		{
-			x[0]=159-(i*13) ; x[1]=260-(i*13) ;  x[2]=250-(i*13) ; x[3]=150-(i*13) ;
-			y[0]=489+(i*20) ;  y[1]=550+(i*20) ; y[2]=565+(i*20) ; y[3]=505+(i*20) ;
-			page.fillPolygon(x,y,4);
-		}
-
-		for (i=0;i<3;i++)
-		{
-			x[0]=159+(i*14)+400 ; x[1]=237+(i*14)+400 ;  x[2]=247+(i*14)+400 ; x[3]=170+(i*14)+400 ;
-			y[0]=550+(i*20) ;  y[1]=489+(i*20) ; y[2]=505+(i*20) ; y[3]=565+(i*20) ;
-			page.fillPolygon(x,y,4);
-		}
-
-		// MALOWANIE
 		page.setFont(new Font("Courier New",Font.CENTER_BASELINE,12));
-		for(i=0; i< light.length; i++)
+		for(i=0;i<lights.length;i++)
 		{
-			light[i].draw(page);
+			lights[i].draw(page);
 			page.setColor(Color.BLACK);
-			page.drawString(Integer.toString(i), light[i].xP[0]+ light[i].diameter/3, light[i].yP[0]+ light[i].diameter/2);
+			page.drawString(Integer.toString(i),lights[i].xP[0]+lights[i].diameter/2-3,lights[i].yP[0]+lights[i].diameter/2);
 		}
 
-		// STRZALKI
-		page.setColor(Color.BLACK);
-		page.drawRect(710,120,80,15);
-		x[0]=680 ; x[1]=710 ;x[2]=710 ;
-		y[0]=127 ; y[1]=112 ;y[2]=142 ;
-		page.drawPolygon(x,y,3);
-		page.drawRect(490+250,135,15,30);
-		x[0]=500+250 ; x[1]=483+250 ;x[2]=513 +250;
-		y[0]=195 ; y[1]=165 ;y[2]=165 ;
-		page.drawPolygon(x,y,3);
+//		page.setColor(Color.WHITE);
+//
+//		page.fillRect(580,710,15,40);
+//		page.fillRect(550,710,30,15);
+//		x[0]=280+240 ; x[1]=310+240 ;x[2]=310+240 ;
+//		y[0]=227+490 ; y[1]=212+490 ;y[2]=242+490 ;
+//		page.fillPolygon(x,y,3);
 
-		page.drawRect(480,610,15,40);
-		page.drawRect(450,610,30,15);
-		x[0]=180+240 ; x[1]=210+240 ;x[2]=210+240 ;
-		y[0]=127+490 ; y[1]=112+490 ;y[2]=142+490 ;
-		page.drawPolygon(x,y,3);
 
-		page.drawRect(40,360,80,15);
-		x[0]=150 ; x[1]=120 ;x[2]=120 ;
-		y[0]=367 ; y[1]=350 ;y[2]=383 ;
-		page.drawPolygon(x,y,3);
+
 	}
 }

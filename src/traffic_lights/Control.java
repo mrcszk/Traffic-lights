@@ -11,7 +11,11 @@ public class Control extends Thread
 	Set<Integer> g0;
 	Set<Integer> g1;
 	Set<Integer> g2;
-	
+	Set<Integer> g3;
+	Set<Integer> g4;
+	Set<Integer> g5;
+
+
 	Timer timer;
 	Events evTimer;
 	final int timeReplaceGroups = 2000;
@@ -32,9 +36,12 @@ public class Control extends Thread
 		this.toGreen = toGreen;
 		this.onRed = onRed;
 		
-		g0 = new HashSet<>(Arrays.asList(0, 6, 7, 9, 10, 12, 13));
-		g1 = new HashSet<>(Arrays.asList(1, 4, 5, 6, 7, 9, 10, 12, 13));
-		g2 = new HashSet<>(Arrays.asList(2, 3, 4, 5, 8, 11,14,15));
+		g0 = new HashSet<>(Arrays.asList(0, 16, 17, 18, 19));
+		g1 = new HashSet<>(Arrays.asList(2, 20, 21,22,23));
+		g2 = new HashSet<>(Arrays.asList(4,8,9,10,11));
+		g3 = new HashSet<>(Arrays.asList(6,12,13,14,15));
+		g4 = new HashSet<>(Arrays.asList(1,5));
+		g5 = new HashSet<>(Arrays.asList(3,5));
 		
 		start();
 	}
