@@ -1,81 +1,126 @@
 package traffic_lights;
 
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JPanel;
 
-
+/**
+ * The type Pedestrian.
+ */
 class Pedestrian extends Thread {
-	TrafficLight light;
-	JPanel panel;
+    /**
+     * The Light.
+     */
+    TrafficLight light;
+    /**
+     * The Panel.
+     */
+    JPanel panel;
 
-	Events toRed, toGreen, onRed;
-
-
-	enum State {
-		ON_RED, ON_GREEN
-	};
-
-	State state;
-
-	public Pedestrian(TrafficLight light, TrafficLightPanel panel, Events toGreen, Events toRed, Events onRed) {
-		super();
-
-		this.light = light;
-		this.panel = panel;
-
-		this.toRed = toRed;
-		this.toGreen = toGreen;
-		this.onRed = onRed;
-
-		start();
-	}
-
-	// przejscia dla pieszych
-
-	public void run(){
-		state = State.ON_RED;
-		SetRed();
-		while (true){
-			switch (state) {
-				case ON_RED:
-					while (true){
-						if (toGreen.arrivedEvent()){
-							toGreen.waitEvent();
-							SetGreen();
-							state = State.ON_GREEN;
-							break;
-						}else Thread.yield();
-					}
-					break;
-				case ON_GREEN:
-					while (true){
-						if (toRed.arrivedEvent()){
-							toRed.waitEvent();
-							SetRed();
-							onRed.sendEvent();
-							state = State.ON_RED;
-							break;
-						}else Thread.yield();
-					}
-					break;
-			}
-		}
-	}
+    /**
+     * The To red.
+     */
+    Events toRed, /**
+     * The To green.
+     */
+    toGreen, /**
+     * The On red.
+     */
+    onRed;
 
 
-	private void SetGreen() {
-		setLight(1, Color.GRAY);
-		setLight(2, Color.GREEN);
-	}
+    /**
+     * The enum State.
+     */
+    enum State {
+        /**
+         * On red state.
+         */
+        ON_RED,
+        /**
+         * On green state.
+         */
+        ON_GREEN
+    }
 
-	private void SetRed() {
-		setLight(1, Color.RED);
-		setLight(2, Color.GRAY);
-	}
+    ;
 
-	public void setLight(int place, Color color) {
-		light.colorLight[place - 1] = color;
-		panel.repaint();
-	}
+    /**
+     * The State.
+     */
+    State state;
+
+    /**
+     * Instantiates a new Pedestrian.
+     *
+     * @param light   the light
+     * @param panel   the panel
+     * @param toGreen the to green
+     * @param toRed   the to red
+     * @param onRed   the on red
+     */
+    public Pedestrian(TrafficLight light, TrafficLightPanel panel, Events toGreen, Events toRed, Events onRed) {
+        super();
+
+        this.light = light;
+        this.panel = panel;
+
+        this.toRed = toRed;
+        this.toGreen = toGreen;
+        this.onRed = onRed;
+
+        start();
+    }
+
+    public void run() {
+        state = State.ON_RED;
+        setRed();
+        while (true) {
+            switch (state) {
+                case ON_RED:
+                    while (true) {
+                        if (toGreen.arrivedEvent()) {
+                            toGreen.waitEvent();
+                            setGreen();
+                            state = State.ON_GREEN;
+                            break;
+                        } else Thread.yield();
+                    }
+                    break;
+                case ON_GREEN:
+                    while (true) {
+                        if (toRed.arrivedEvent()) {
+                            toRed.waitEvent();
+                            setRed();
+                            onRed.sendEvent();
+                            state = State.ON_RED;
+                            break;
+                        } else Thread.yield();
+                    }
+                    break;
+            }
+        }
+    }
+
+
+    private void setGreen() {
+        setLight(1, Color.GRAY);
+        setLight(2, Color.GREEN);
+    }
+
+    private void setRed() {
+        setLight(1, Color.RED);
+        setLight(2, Color.GRAY);
+    }
+
+    /**
+     * Sets light.
+     *
+     * @param place the place
+     * @param color the color
+     */
+    public void setLight(int place, Color color) {
+        light.colorLight[place - 1] = color;
+        panel.repaint();
+    }
 }
