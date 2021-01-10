@@ -23,10 +23,7 @@ class Pedestrian extends Thread {
     Events toRed, /**
      * The To green.
      */
-    toGreen, /**
-     * The On red.
-     */
-    onRed;
+    toGreen;
 
 
     /**
@@ -41,9 +38,7 @@ class Pedestrian extends Thread {
          * On green state.
          */
         ON_GREEN
-    }
-
-    ;
+    };
 
     /**
      * The State.
@@ -57,9 +52,8 @@ class Pedestrian extends Thread {
      * @param panel   the panel
      * @param toGreen the to green
      * @param toRed   the to red
-     * @param onRed   the on red
      */
-    public Pedestrian(TrafficLight light, TrafficLightPanel panel, Events toGreen, Events toRed, Events onRed) {
+    public Pedestrian(TrafficLight light, TrafficLightPanel panel, Events toGreen, Events toRed) {
         super();
 
         this.light = light;
@@ -67,7 +61,6 @@ class Pedestrian extends Thread {
 
         this.toRed = toRed;
         this.toGreen = toGreen;
-        this.onRed = onRed;
 
         start();
     }
@@ -79,7 +72,7 @@ class Pedestrian extends Thread {
             switch (state) {
                 case ON_RED:
                     while (true) {
-                        if (toGreen.arrivedEvent()) {
+                        if (toGreen.arrivedEvent()){
                             toGreen.waitEvent();
                             setGreen();
                             state = State.ON_GREEN;
@@ -92,7 +85,6 @@ class Pedestrian extends Thread {
                         if (toRed.arrivedEvent()) {
                             toRed.waitEvent();
                             setRed();
-                            onRed.sendEvent();
                             state = State.ON_RED;
                             break;
                         } else Thread.yield();

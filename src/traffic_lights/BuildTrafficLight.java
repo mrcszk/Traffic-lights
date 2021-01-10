@@ -16,12 +16,10 @@ public class BuildTrafficLight {
 
         Events[] toGreen = new Events[numOfLights];
         Events[] toRed = new Events[numOfLights];
-        Events[] onRed = new Events[numOfLights];
 
         for (int i = 0; i < numOfLights; i++) {
             toRed[i] = new Events();
             toGreen[i] = new Events();
-            onRed[i] = new Events();
         }
 
 
@@ -64,13 +62,13 @@ public class BuildTrafficLight {
 
 
         for (int i = 0; i < 8; i++) {
-            new Road(light[i], tlf.myPanel, toGreen[i], toRed[i], onRed[i]);
+            new Road(light[i], tlf.myPanel, toGreen[i], toRed[i]);
         }
 
         for (int i = 8; i < light.length; i++) {
-            new Pedestrian(light[i], tlf.myPanel, toGreen[i], toRed[i], onRed[i]);
+            new Pedestrian(light[i], tlf.myPanel, toGreen[i], toRed[i]);
         }
 
-        new Control(toRed, toGreen, onRed);
+        new Control(toGreen, toRed);
     }
 }

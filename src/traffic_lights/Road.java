@@ -27,10 +27,7 @@ public class Road extends Thread {
     Events ToRed, /**
      * The To green.
      */
-    ToGreen, /**
-     * The On red.
-     */
-    OnRed;
+    ToGreen;
 
 
     /**
@@ -78,15 +75,13 @@ public class Road extends Thread {
      * @param panel   the panel
      * @param ToGreen the to green
      * @param ToRed   the to red
-     * @param OnRed   the on red
      */
-    public Road(TrafficLight light, JPanel panel, Events ToGreen, Events ToRed, Events OnRed) {
+    public Road(TrafficLight light, JPanel panel, Events ToGreen, Events ToRed) {
         this.light = light;
         this.panel = panel;
 
         this.ToRed = ToRed;
         this.ToGreen = ToGreen;
-        this.OnRed = OnRed;
 
         start();
     }
@@ -117,8 +112,11 @@ public class Road extends Thread {
                             SetGreen();
                             states = States.ON_GREEN;
 
-                            evTimer = new Events();
-                            evTimer.run(timeRedYellow);
+//                            ToRed.sendEvent();
+
+//                            evTimer = new Events();
+//                            evTimer.run(timeGreen);
+
                             break;
                         } else Thread.yield();
                     }
@@ -130,8 +128,11 @@ public class Road extends Thread {
                             SetYellow();
                             states = States.ON_YELLOW;
 
+//                            ToRed.sendEvent();
+
                             evTimer = new Events();
-                            evTimer.run(timeGreen);
+                            evTimer.run(timeRedYellow);
+
                             break;
                         } else Thread.yield();
                     }
@@ -143,7 +144,9 @@ public class Road extends Thread {
                             SetRed();
                             states = States.ON_RED;
 
-                            OnRed.sendEvent();
+//                            ToGreen.sendEvent();
+//                            ToRed.resetEvent();
+//                            ToGreen.resetEvent();
                             break;
                         } else Thread.yield();
                     }
