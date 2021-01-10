@@ -26,12 +26,7 @@ public class Control extends Thread {
      */
     final int timeDelayGreenToRed = 500;
 
-    int[] g0 = {0, 16, 17, 18, 19,4};
-    int[] g1 = {2, 20, 21, 22, 23,6};
-    int[] g2 = {0, 4, 8, 9, 10, 11};
-    int[] g3 = {2, 6, 12, 13, 14, 15};
-    int[] g4 = {1, 5};
-    int[] g5 = {3, 7};
+    int[] g0, g1, g2, g3, g4, g5;
 
     /**
      * The enum State.
@@ -98,10 +93,17 @@ public class Control extends Thread {
      * @param toRed   the to red
      * @param toGreen the to green
      */
-    public Control(Events[] toGreen, Events[] toRed) {
+    public Control(Events[] toGreen, Events[] toRed, int[] g0, int[] g1, int[] g2, int[] g3, int[] g4, int[] g5) {
         super();
         this.toGreen = toGreen;
         this.toRed = toRed;
+
+        this.g0 = g0;
+        this.g1 = g1;
+        this.g2 = g2;
+        this.g3 = g3;
+        this.g4 = g4;
+        this.g5 = g5;
 
         start();
     }

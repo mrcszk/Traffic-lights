@@ -22,7 +22,6 @@ public class BuildTrafficLight {
             toGreen[i] = new Events();
         }
 
-
         TrafficLight[] light = new TrafficLight[24];
         light[0] = new TrafficLight(3, 40, 590, 440, 590, 482, 590, 524);
         light[1] = new TrafficLight(3, 40, 530, 440, 530, 482, 530, 524);
@@ -60,7 +59,6 @@ public class BuildTrafficLight {
 
         TrafficLightFrame tlf = new TrafficLightFrame("Traffic lights", light);
 
-
         for (int i = 0; i < 8; i++) {
             new Road(light[i], tlf.myPanel, toGreen[i], toRed[i]);
         }
@@ -69,6 +67,13 @@ public class BuildTrafficLight {
             new Pedestrian(light[i], tlf.myPanel, toGreen[i], toRed[i]);
         }
 
-        new Control(toGreen, toRed);
+        int[] g0 = {0, 16, 17, 18, 19,4};
+        int[] g1 = {2, 20, 21, 22, 23,6};
+        int[] g2 = {0, 4, 8, 9, 10, 11};
+        int[] g3 = {2, 6, 12, 13, 14, 15};
+        int[] g4 = {1, 5};
+        int[] g5 = {3, 7};
+
+        new Control(toGreen, toRed, g0, g1, g2, g3, g4, g5);
     }
 }
