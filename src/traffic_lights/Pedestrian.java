@@ -20,10 +20,7 @@ class Pedestrian extends Thread {
     /**
      * The To red.
      */
-    Events toRed, /**
-     * The To green.
-     */
-    toGreen;
+    Events toRed, toGreen;
 
 
     /**

@@ -241,6 +241,5 @@ class TrafficLightPanel extends JPanel {
         y[2] = 103;
         page.fillPolygon(x, y, 3);
 
-
     }
 }

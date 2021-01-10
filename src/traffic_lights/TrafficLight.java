@@ -14,10 +14,7 @@ class TrafficLight {
     /**
      * The X p.
      */
-    int[] xP, /**
-     * The Y p.
-     */
-    yP;
+    int[] xP, yP;
     /**
      * The Diameter.
      */

@@ -24,20 +24,12 @@ public class Road extends Thread {
     /**
      * The To red.
      */
-    Events ToRed, /**
-     * The To green.
-     */
-    ToGreen;
-
+    Events toRed, toGreen;
 
     /**
      * The Time red yellow.
      */
     final int timeRedYellow = 500;
-    /**
-     * The Time green.
-     */
-    final int timeGreen = 1000;
 
     /**
      * The enum States.
@@ -61,8 +53,6 @@ public class Road extends Thread {
         ON_YELLOW
     }
 
-    ;
-
     /**
      * The States.
      */
@@ -73,15 +63,15 @@ public class Road extends Thread {
      *
      * @param light   the light
      * @param panel   the panel
-     * @param ToGreen the to green
-     * @param ToRed   the to red
+     * @param toGreen the to green
+     * @param toRed   the to red
      */
-    public Road(TrafficLight light, JPanel panel, Events ToGreen, Events ToRed) {
+    public Road(TrafficLight light, JPanel panel, Events toGreen, Events toRed) {
         this.light = light;
         this.panel = panel;
 
-        this.ToRed = ToRed;
-        this.ToGreen = ToGreen;
+        this.toRed = toRed;
+        this.toGreen = toGreen;
 
         start();
     }
@@ -94,15 +84,14 @@ public class Road extends Thread {
             switch (states) {
                 case ON_RED:
                     while (true) {
-                        if (ToGreen.arrivedEvent()) {
-                            ToGreen.waitEvent();
+                        if (toGreen.arrivedEvent()) {
+                            toGreen.waitEvent();
                             SetRedYellow();
                             states = States.ON_REDYELLOW;
 
-                            evTimer = new Events();
                             evTimer.run(timeRedYellow);
                             break;
-                        } else Thread.yield();
+                        }  Thread.yield();
                     }
                     break;
                 case ON_REDYELLOW:
@@ -112,29 +101,20 @@ public class Road extends Thread {
                             SetGreen();
                             states = States.ON_GREEN;
 
-//                            ToRed.sendEvent();
-
-//                            evTimer = new Events();
-//                            evTimer.run(timeGreen);
-
                             break;
-                        } else Thread.yield();
+                        }  Thread.yield();
                     }
                     break;
                 case ON_GREEN:
                     while (true) {
-                        if (ToRed.arrivedEvent()) {
-                            ToRed.waitEvent();
+                        if (toRed.arrivedEvent()) {
+                            toRed.waitEvent();
                             SetYellow();
                             states = States.ON_YELLOW;
 
-//                            ToRed.sendEvent();
-
-                            evTimer = new Events();
                             evTimer.run(timeRedYellow);
-
                             break;
-                        } else Thread.yield();
+                        }  Thread.yield();
                     }
                     break;
                 case ON_YELLOW:
@@ -144,11 +124,8 @@ public class Road extends Thread {
                             SetRed();
                             states = States.ON_RED;
 
-//                            ToGreen.sendEvent();
-//                            ToRed.resetEvent();
-//                            ToGreen.resetEvent();
                             break;
-                        } else Thread.yield();
+                        }  Thread.yield();
                     }
                     break;
             }

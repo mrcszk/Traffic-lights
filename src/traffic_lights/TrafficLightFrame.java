@@ -7,10 +7,6 @@ import javax.swing.*;
  * The type Traffic light frame.
  */
 public class TrafficLightFrame extends JFrame {
-    private final int WIDTH = 890, HEIGHT = 840;
-    /**
-     * The My panel.
-     */
     TrafficLightPanel myPanel;
 
     /**
@@ -26,6 +22,8 @@ public class TrafficLightFrame extends JFrame {
         myPanel = new TrafficLightPanel(lights);
         add(myPanel);
         pack();
+        int WIDTH = 890;
+        int HEIGHT = 840;
         setSize(WIDTH, HEIGHT);
         setResizable(false);
         setVisible(true);

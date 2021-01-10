@@ -17,21 +17,21 @@ public class BuildTrafficLight {
         Events[] toGreen = new Events[numOfLights];
         Events[] toRed = new Events[numOfLights];
 
-        for (int i = 0; i < numOfLights; i++) {
+        for (int i = 0; i < numOfLights; i++){
             toRed[i] = new Events();
             toGreen[i] = new Events();
         }
 
 
         TrafficLight[] light = new TrafficLight[24];
-        light[0] = new TrafficLight(3, 40, 590, 440, 590, 440 + 42, 590, 440 + 2 * 42);
-        light[1] = new TrafficLight(3, 40, 530, 440, 530, 440 + 42, 530, 440 + 2 * 42);
+        light[0] = new TrafficLight(3, 40, 590, 440, 590, 482, 590, 524);
+        light[1] = new TrafficLight(3, 40, 530, 440, 530, 482, 530, 524);
 
         light[2] = new TrafficLight(3, 40, 350, 525, 308, 525, 266, 525);
         light[3] = new TrafficLight(3, 40, 350, 465, 308, 465, 266, 465);
 
-        light[4] = new TrafficLight(3, 40, 280, 330, 280, 330 - 42, 280, 330 - (2 * 42));
-        light[5] = new TrafficLight(3, 40, 340, 330, 340, 330 - 42, 340, 330 - 2 * 42);
+        light[4] = new TrafficLight(3, 40, 280, 330, 280, 288, 280, 246);
+        light[5] = new TrafficLight(3, 40, 340, 330, 340, 288, 340, 246);
 
         light[6] = new TrafficLight(3, 40, 505, 240, 547, 240, 589, 240);
         light[7] = new TrafficLight(3, 40, 505, 290, 547, 290, 589, 290);
